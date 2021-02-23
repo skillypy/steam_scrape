@@ -11,22 +11,22 @@ soup = BeautifulSoup(respon.text, "html.parser")
 top_sellers = soup.findAll('div', attrs={'class':'search_results'})
 
 for top_seller in top_sellers:
-    judul = top_seller.findAll('span', attrs={'class':'title'})
+    title = top_seller.findAll('span', attrs={'class':'title'})
     count = 0
-    for juduls in judul:
+    for titles in title:
         count += 1
-        saring = juduls.text
-        print(f"{count}.{saring}")
-    gambar = top_seller.findAll('div', attrs={'class':'col search_capsule'})
-    for gambars in gambar:
+        filter = titles.text
+        print(f"{count}.{filter}")
+    pic = top_seller.findAll('div', attrs={'class':'col search_capsule'})
+    for pics in pic:
         count += 1
-        saring = gambars.find('img')
-        print(f"{count}.{saring}")
-    tanggal = top_seller.findAll('div', attrs={'class':'col search_released responsive_secondrow'})
-    for tanggals in tanggal:
+        filter = pics.find('img')
+        print(f"{count}.{filter}")
+    date = top_seller.findAll('div', attrs={'class':'col search_released responsive_secondrow'})
+    for dates in date:
         count += 1
-        saring = tanggals.text
-        saringgan = ""
-        if saring == "":
-            saringgan = "Tanggal Kosong"
-        print(f"{count}.{saringgan}{saring}")
+        filter = dates.text
+        filters = ""
+        if filter == "":
+            filters = "Empty date"
+        print(f"{count}.{filters}{filter}")
